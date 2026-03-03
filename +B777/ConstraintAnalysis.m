@@ -147,7 +147,7 @@ end
 
 
 % ---------- Take-off Distance Constraint -----------
-TW_min_todistance = (((445/SI.lb_over_ft2)*g*sigma_MEX* ...
+TW_min_todistance = (((232.3/SI.lb_over_ft2)*g*sigma_MEX* ...
     (obj.Cl_max + obj.Delta_Cl_to))^(-1))*WS_design;
 
 if TW_min_todistance > TW_design
