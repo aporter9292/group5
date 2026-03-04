@@ -1,4 +1,4 @@
-%% Size an B777 at a Mach number of 0.84
+%% Size an B777 at a Mach number of 0.85
 
 % ------------------ Aircraft Instance Initiation ------------------
 ADP = B777.ADP();
@@ -61,6 +61,7 @@ fprintf('CD0: %0.3f, CD (CL=0.5): %0.3f \n',ADP.AeroPolar.CD(0),ADP.AeroPolar.CD
 [BlockFuel,TripFuel,ResFuel,Mf_TOC,MissionTime] = B777.MissionAnalysis(ADP,ADP.TLAR.Range, ADP.MTOM);
 
 %% Example Trade study, comparing MTOM and Block Fuel as a function of wing span
+%{
 % predefine spans to test
 Spans = 50:5:100;
 
@@ -75,6 +76,7 @@ for i = 1:length(Spans)
     mtoms(i) = ADP.MTOM;
     fuels(i) = ADP.Mf_Fuel*ADP.MTOM;
 end
+%}
 
 f = figure(2);
 clf;
