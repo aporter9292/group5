@@ -30,9 +30,11 @@ cruise_FL  = round(alt.*SI.ft/1e2,0);          % cruise flight level (e.g. 353 =
 
 % ── BWB L/D override ─────────────────────────────────────────────────────
 % AeroPolar uses B777 CD0 (0.019) giving L/D ≈ 11, which is not valid for BWB.
-% Override with BWB design L/D = 22 (Liebeck 2004; Qin et al. 2004).
-% Remove this line once aero team provides the BWB drag polar.
-LD_c = 22;   % BWB cruise L/D — design target (pending aero team polar)
+% Override with BWB cruise L/D = 18 (Aero v2.0: CruisePolarSizing seed;
+%   CD0=0.012, AR=3.79, e=0.85.  Liebeck 2004 reports 20-23 for clean BWB;
+%   18 is conservative and accounts for trim drag + compressibility).
+% Remove this line once aero team provides the converged BWB drag polar.
+LD_c = 18;   % BWB cruise L/D — Aero v2.0 seed (pending converged polar)
 % ─────────────────────────────────────────────────────────────────────────
 
 % Suppress debug plot (L/D vs CL) — remove comment to re-enable
@@ -129,7 +131,7 @@ Mf_TOC = W_to / M_TO;
 
 MissionTime = ts(1);
 
-% --- Outputs for fidelity2_climate_CO2 pipeline ---
+% --- Outputs for fidelity2_climate_Kerosene pipeline ---
 % tripRange is in metres (from ADP.TLAR.Range); convert to km for AIC
 range_km = tripRange / 1000;
 
